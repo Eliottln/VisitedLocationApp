@@ -1,4 +1,24 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="1" systemVersion="11A491" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithCloudKit="false" userDefinedModelVersionIdentifier="">
-    <elements/>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="21513" systemVersion="22C65" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="Category" representedClassName="Category" syncable="YES" codeGenerationType="class">
+        <attribute name="creationDate" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="modificationDate" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="name" attributeType="String"/>
+        <relationship name="landmark" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Landmark" inverseName="category" inverseEntity="Landmark"/>
+    </entity>
+    <entity name="Coordinate" representedClassName="Coordinate" syncable="YES" codeGenerationType="class">
+        <attribute name="latitude" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="longitude" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <relationship name="landmark" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Landmark" inverseName="coordinate" inverseEntity="Landmark"/>
+    </entity>
+    <entity name="Landmark" representedClassName="Landmark" syncable="YES" codeGenerationType="class">
+        <attribute name="creationDate" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="image" attributeType="Binary" allowsExternalBinaryDataStorage="YES"/>
+        <attribute name="isFavorite" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="landmarkDescription" attributeType="String"/>
+        <attribute name="modificationDate" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="title" attributeType="String"/>
+        <relationship name="category" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Category" inverseName="landmark" inverseEntity="Category"/>
+        <relationship name="coordinate" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="Coordinate" inverseName="landmark" inverseEntity="Coordinate"/>
+    </entity>
 </model>

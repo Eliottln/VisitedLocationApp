@@ -12,7 +12,7 @@ class LocationViewController: UITableViewController {
     
     // MARK: - Properties
     
-    var locationName: String?
+    var category: Category? = nil
     private var landmarks: [Landmark] = []
     private var viewContext: NSManagedObjectContext{
         (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
@@ -20,11 +20,13 @@ class LocationViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        landmarks = fetchItems()
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        title = locationName
+        super.viewWillAppear(animated)
+        landmarks = fetchItems()
+        title = category!.name
+        tableView.reloadData()
     }
     
     private func fetchItems(searchText: String? = nil) -> [Landmark] {
@@ -62,9 +64,19 @@ class LocationViewController: UITableViewController {
         return cell
     }
     
-    
+    // MARK: - Navigation
+
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if (segue.identifier == "newLocation") {
+            let dest = segue.destination as! NewLocationViewController
+            dest.category = category
+            dest.delegate = self
+        }
+    }
     
 }
+
+// MARK: - extension
 
 extension LocationViewController: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
@@ -73,3 +85,11 @@ extension LocationViewController: UISearchResultsUpdating {
         tableView.reloadData()
     }
 }
+
+extension LocationViewController: NewLocationViewControllerDelegate {
+    func addLocationViewControllerAdd(_ controller: NewLocationViewController) {
+        navigationController?.popViewController(animated: true)
+    }
+
+}
+

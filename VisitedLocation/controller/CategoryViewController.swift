@@ -123,7 +123,7 @@ class CategoryViewController: UITableViewController {
         if (segue.identifier == "showLocations") {
             let dest = segue.destination as! LocationViewController
             let index = tableView.indexPathForSelectedRow?.row
-            dest.locationName = categories[index ?? 0].name
+            dest.category = categories[index ?? 0]
         }
     }
     

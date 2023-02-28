@@ -97,7 +97,7 @@
                     <navigationItem key="navigationItem" title="Lieux" id="zZr-TA-yBX">
                         <barButtonItem key="rightBarButtonItem" title="Item" image="plus" catalog="system" id="GnQ-cN-zop">
                             <connections>
-                                <segue destination="xmw-kh-47k" kind="presentation" id="YZR-pu-YGI"/>
+                                <segue destination="xmw-kh-47k" kind="show" identifier="newLocation" id="YZR-pu-YGI"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -106,16 +106,16 @@
             </objects>
             <point key="canvasLocation" x="349" y="726"/>
         </scene>
-        <!--View Controller-->
+        <!--New Location View Controller-->
         <scene sceneID="YfQ-JW-GCu">
             <objects>
-                <viewController id="xmw-kh-47k" sceneMemberID="viewController">
+                <viewController id="xmw-kh-47k" customClass="NewLocationViewController" customModule="VisitedLocation" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="2F7-o4-vtN">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="783"/>
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="NuJ-Gh-4hf">
-                                <rect key="frame" x="16" y="75" width="361" height="276.66666666666669"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="NuJ-Gh-4hf">
+                                <rect key="frame" x="16" y="155.00000000000003" width="361" height="348.66666666666674"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="CW7-zO-TTa">
                                         <rect key="frame" x="0.0" y="0.0" width="361" height="132.66666666666666"/>
@@ -130,14 +130,14 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Nom du lieu" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Elz-Jn-jgC">
-                                                        <rect key="frame" x="0.0" y="24.333333333333329" width="361" height="34"/>
+                                                        <rect key="frame" x="0.0" y="24.333333333333343" width="361" height="34"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits"/>
                                                     </textField>
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="ajm-jk-K7U">
-                                                <rect key="frame" x="0.0" y="74.333333333333329" width="361" height="58.333333333333329"/>
+                                                <rect key="frame" x="0.0" y="74.333333333333343" width="361" height="58.333333333333343"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e7u-8N-fBJ">
                                                         <rect key="frame" x="0.0" y="0.0" width="361" height="20.333333333333332"/>
@@ -146,7 +146,7 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Description du lieu" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="is7-p9-WlS">
-                                                        <rect key="frame" x="0.0" y="24.333333333333343" width="361" height="34"/>
+                                                        <rect key="frame" x="0.0" y="24.333333333333314" width="361" height="34"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits"/>
                                                     </textField>
@@ -154,15 +154,36 @@
                                             </stackView>
                                         </subviews>
                                     </stackView>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zpM-cG-Y5Q">
-                                        <rect key="frame" x="0.0" y="148.66666666666666" width="361" height="127.99999999999997"/>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="zzz" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="zpM-cG-Y5Q">
+                                        <rect key="frame" x="0.0" y="149" width="361" height="199.33333333333337"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="200" id="dtO-zq-nuU"/>
+                                        </constraints>
                                     </imageView>
                                 </subviews>
                             </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="b0b-6e-UUi"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="b0b-6e-UUi" firstAttribute="trailing" secondItem="NuJ-Gh-4hf" secondAttribute="trailing" constant="16" id="1mw-Wd-bpK"/>
+                            <constraint firstItem="NuJ-Gh-4hf" firstAttribute="leading" secondItem="b0b-6e-UUi" secondAttribute="leading" constant="16" id="YNg-5e-6Ja"/>
+                            <constraint firstItem="NuJ-Gh-4hf" firstAttribute="top" secondItem="b0b-6e-UUi" secondAttribute="top" id="fOg-aC-36n"/>
+                        </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="QFz-Eq-EeC">
+                        <barButtonItem key="rightBarButtonItem" image="checkmark" catalog="system" id="5Vj-Ek-6iN">
+                            <connections>
+                                <action selector="addLocation:" destination="xmw-kh-47k" id="oKt-Zb-K7E"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="doneButton" destination="5Vj-Ek-6iN" id="0Mb-fD-Lbw"/>
+                        <outlet property="imageView" destination="zpM-cG-Y5Q" id="0Ae-ag-spB"/>
+                        <outlet property="locationDescription" destination="is7-p9-WlS" id="4WF-p3-hqf"/>
+                        <outlet property="locationName" destination="Elz-Jn-jgC" id="9bG-Nx-ena"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="k3J-T6-BEr" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -188,7 +209,9 @@
         </scene>
     </scenes>
     <resources>
+        <image name="checkmark" catalog="system" width="128" height="114"/>
         <image name="plus" catalog="system" width="128" height="113"/>
+        <image name="zzz" catalog="system" width="119" height="128"/>
         <systemColor name="secondaryLabelColor">
             <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>

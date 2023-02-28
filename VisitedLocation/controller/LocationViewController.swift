@@ -20,6 +20,11 @@ class LocationViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let searchController = UISearchController(searchResultsController: nil)
+        searchController.obscuresBackgroundDuringPresentation = false
+        searchController.searchResultsUpdater = self
+        navigationItem.searchController = searchController
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -49,6 +54,9 @@ class LocationViewController: UITableViewController {
         }
     }
     
+    private func saveContext() {
+        (UIApplication.shared.delegate as! AppDelegate).saveContext()
+    }
     
     // MARK: - Table view data source
     
@@ -62,6 +70,21 @@ class LocationViewController: UITableViewController {
         cell.textLabel?.text = item.title
         cell.detailTextLabel?.text = item.creationDate?.formatted()
         return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        guard editingStyle == .delete else {
+            return
+        }
+        
+        let index = indexPath.row
+        let item = landmarks[index]
+        
+        viewContext.delete(item)
+        saveContext()
+        
+        landmarks.remove(at: index)
+        tableView.deleteRows(at: [indexPath], with: .automatic)
     }
     
     // MARK: - Navigation

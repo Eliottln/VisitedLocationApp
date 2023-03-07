@@ -37,6 +37,10 @@ class NewLocationViewController: UIViewController, UINavigationControllerDelegat
         self.dismiss(animated: true)
     }
     
+    @IBAction func updateDoneButton(_ sender: Any) {
+        doneButton.isEnabled = locationName.hasText && locationDescription.hasText
+    }
+    
     @IBAction func chooseImage(_ sender: Any) {
         if UIImagePickerController.isSourceTypeAvailable(.savedPhotosAlbum){
             imagePicker.delegate = self

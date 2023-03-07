@@ -8,14 +8,15 @@
 import UIKit
 import CoreData
 
-class NewLocationViewController: UIViewController {
-
+class NewLocationViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
+    
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var doneButton: UIBarButtonItem!
     @IBOutlet weak var locationName: UITextField!
     @IBOutlet weak var locationDescription: UITextField!
     var category: Category? = nil
     var delegate: NewLocationViewControllerDelegate?
+    var imagePicker = UIImagePickerController()
     
     private var viewContext: NSManagedObjectContext{
         (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
@@ -23,6 +24,26 @@ class NewLocationViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        guard let selectedImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage else { return }
+        imageView.image = selectedImage
+        print(info.keys)
+        self.dismiss(animated: true)
+    }
+
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        self.dismiss(animated: true)
+    }
+    
+    @IBAction func chooseImage(_ sender: Any) {
+        if UIImagePickerController.isSourceTypeAvailable(.savedPhotosAlbum){
+            imagePicker.delegate = self
+            imagePicker.sourceType = .savedPhotosAlbum
+            imagePicker.allowsEditing = false
+            present(imagePicker, animated: true, completion: nil)
+        }
     }
     
     @IBAction func addLocation(_ sender: UIBarButtonItem) {

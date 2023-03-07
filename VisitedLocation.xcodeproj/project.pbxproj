@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0814FB0E29B77342008EBFEA /* LandmarkTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0814FB0D29B77342008EBFEA /* LandmarkTableViewCell.swift */; };
+		0814FB1029B779D8008EBFEA /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0814FB0F29B779D8008EBFEA /* DetailsViewController.swift */; };
 		083A6EAA298928E20014E60C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 083A6EA9298928E20014E60C /* AppDelegate.swift */; };
 		083A6EAC298928E20014E60C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 083A6EAB298928E20014E60C /* SceneDelegate.swift */; };
 		083A6EAE298928E20014E60C /* CategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 083A6EAD298928E20014E60C /* CategoryViewController.swift */; };
@@ -19,6 +21,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0814FB0D29B77342008EBFEA /* LandmarkTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandmarkTableViewCell.swift; sourceTree = "<group>"; };
+		0814FB0F29B779D8008EBFEA /* DetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
 		083A6EA6298928E20014E60C /* VisitedLocation.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VisitedLocation.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		083A6EA9298928E20014E60C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		083A6EAB298928E20014E60C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -80,6 +84,8 @@
 				083A6EAD298928E20014E60C /* CategoryViewController.swift */,
 				083A6EC1298953A20014E60C /* LocationViewController.swift */,
 				08CBE61429AE2FCB00C7A8E1 /* NewLocationViewController.swift */,
+				0814FB0D29B77342008EBFEA /* LandmarkTableViewCell.swift */,
+				0814FB0F29B779D8008EBFEA /* DetailsViewController.swift */,
 			);
 			path = controller;
 			sourceTree = "<group>";
@@ -158,8 +164,10 @@
 				08CBE61529AE2FCB00C7A8E1 /* NewLocationViewController.swift in Sources */,
 				083A6EAE298928E20014E60C /* CategoryViewController.swift in Sources */,
 				083A6EB4298928E20014E60C /* VisitedLocation.xcdatamodeld in Sources */,
+				0814FB1029B779D8008EBFEA /* DetailsViewController.swift in Sources */,
 				083A6EC2298953A20014E60C /* LocationViewController.swift in Sources */,
 				083A6EAA298928E20014E60C /* AppDelegate.swift in Sources */,
+				0814FB0E29B77342008EBFEA /* LandmarkTableViewCell.swift in Sources */,
 				083A6EAC298928E20014E60C /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

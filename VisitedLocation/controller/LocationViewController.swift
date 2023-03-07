@@ -43,7 +43,10 @@ class LocationViewController: UITableViewController {
         fetchRequest.sortDescriptors = [dateSortDescriptor, nameSortDescriptor]
         
         if let searchText = searchText, !searchText.isEmpty {
-            fetchRequest.predicate = NSPredicate(format: "%K contains[cd] %@", argumentArray: [#keyPath(Landmark.title), searchText])
+            fetchRequest.predicate = NSPredicate(format: "%K contains[cd] %@ && category = %@", argumentArray: [#keyPath(Landmark.title), searchText, category!])
+        }
+        else {
+            fetchRequest.predicate = NSPredicate(format: "category = %@", argumentArray: [category!])
         }
         
         do {
@@ -67,9 +70,11 @@ class LocationViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "locCell", for: indexPath)
         let item = landmarks[indexPath.row]
-        cell.textLabel?.text = item.title
-        cell.detailTextLabel?.text = item.creationDate?.formatted()
-        return cell
+        let itemCell = cell as! LandmarkTableViewCell
+        itemCell.cellTitle.text = item.title
+        itemCell.cellDescription.text = item.landmarkDescription
+        itemCell.cellImage.image = UIImage(data: item.image!)
+        return itemCell
     }
     
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
@@ -94,6 +99,11 @@ class LocationViewController: UITableViewController {
             let dest = segue.destination as! NewLocationViewController
             dest.category = category
             dest.delegate = self
+        }
+        if (segue.identifier == "landmarkDetails") {
+            let dest = segue.destination as! DetailsViewController
+            let index = tableView.indexPathForSelectedRow?.row
+            dest.landmark = landmarks[index ?? 0]
         }
     }
     
